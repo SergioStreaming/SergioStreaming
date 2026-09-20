@@ -1,322 +1,300 @@
-const cart = [];
+let cart = [];
 
-const cartPanel = document.getElementById("cartPanel");
-const cartOverlay = document.getElementById("cartOverlay");
-const openCart = document.getElementById("openCart");
-const closeCart = document.getElementById("closeCart");
+const mercadoPagoLink =
+    "https://link.mercadopago.com.ar/pirunet";
 
-const cartItems = document.getElementById("cartItems");
-const cartCount = document.getElementById("cartCount");
-const cartTotal = document.getElementById("cartTotal");
-
-const checkoutButton = document.getElementById("checkoutButton");
-
-const checkoutModal = document.getElementById("checkoutModal");
-const closeCheckout = document.getElementById("closeCheckout");
-const checkoutForm = document.getElementById("checkoutForm");
-
-const checkoutTotal = document.getElementById("checkoutTotal");
-
-const WHATSAPP = "543844546841";
-
-const MERCADO_PAGO = "https://link.mercadopago.com.ar/pirunet";
+const whatsappNumber =
+    "543844546841";
 
 
-/* FORMATO DE DINERO */
+/* =========================
+   AGREGAR AL CARRITO
+========================= */
 
-function formatPrice(price) {
-  return "$" + Number(price).toLocaleString("es-AR");
+function addToCart(name, price) {
+
+    cart.push({
+        name: name,
+        price: price
+    });
+
+    updateCart();
+
+    openCart();
 }
 
 
-/* ABRIR CARRITO */
-
-function openCartPanel() {
-  cartPanel.classList.add("active");
-  cartOverlay.classList.add("active");
-  document.body.style.overflow = "hidden";
-}
-
-
-/* CERRAR CARRITO */
-
-function closeCartPanel() {
-  cartPanel.classList.remove("active");
-  cartOverlay.classList.remove("active");
-  document.body.style.overflow = "";
-}
-
-
-/* AGREGAR PRODUCTO */
-
-function addProduct(button) {
-
-  const product = {
-    id: Date.now(),
-    name: button.dataset.name,
-    plan: button.dataset.plan,
-    price: Number(button.dataset.price)
-  };
-
-  cart.push(product);
-
-  updateCart();
-
-  openCartPanel();
-
-  button.textContent = "✓ Agregado";
-
-  setTimeout(() => {
-    button.textContent = "Agregar Al Carrito";
-  }, 1000);
-}
-
-
-/* ELIMINAR PRODUCTO */
-
-function removeProduct(id) {
-
-  const index = cart.findIndex(product => product.id === id);
-
-  if (index !== -1) {
-    cart.splice(index, 1);
-  }
-
-  updateCart();
-}
-
-
-/* ACTUALIZAR CARRITO */
+/* =========================
+   ACTUALIZAR CARRITO
+========================= */
 
 function updateCart() {
 
-  cartCount.textContent = cart.length;
+    const cartItems =
+        document.getElementById("cartItems");
 
-  if (cart.length === 0) {
+    const cartCount =
+        document.getElementById("cartCount");
 
-    cartItems.innerHTML = `
-      <div class="empty-cart">
-        <div>🛒</div>
-        <h3>Tu Carrito Está Vacío</h3>
-        <p>Agregá Un Servicio Para Continuar.</p>
-      </div>
-    `;
+    const cartTotal =
+        document.getElementById("cartTotal");
 
-    cartTotal.textContent = "$0";
-    checkoutTotal.textContent = "$0";
-    checkoutButton.disabled = true;
 
-    return;
-  }
+    cartCount.textContent = cart.length;
 
-  checkoutButton.disabled = false;
 
-  let total = 0;
+    if (cart.length === 0) {
 
-  cartItems.innerHTML = "";
+        cartItems.innerHTML = `
+            <p style="
+                color:#777;
+                text-align:center;
+                padding:30px 0;
+            ">
+                Tu Carrito Está Vacío.
+            </p>
+        `;
 
-  cart.forEach(product => {
+        cartTotal.textContent = "$0";
 
-    total += product.price;
+        return;
+    }
 
-    const item = document.createElement("div");
 
-    item.className = "cart-item";
+    cartItems.innerHTML = "";
 
-    item.innerHTML = `
-      <div class="cart-item-info">
-        <strong>${product.name}</strong>
-        <span>${product.plan}</span>
-        <button class="remove-item" data-id="${product.id}">
-          Eliminar
-        </button>
-      </div>
 
-      <div class="cart-item-price">
-        ${formatPrice(product.price)}
-      </div>
-    `;
+    let total = 0;
 
-    cartItems.appendChild(item);
-  });
 
-  cartTotal.textContent = formatPrice(total);
-  checkoutTotal.textContent = formatPrice(total);
+    cart.forEach((item, index) => {
 
-  document.querySelectorAll(".remove-item").forEach(button => {
+        total += item.price;
 
-    button.addEventListener("click", () => {
-      removeProduct(Number(button.dataset.id));
+
+        const div =
+            document.createElement("div");
+
+        div.className = "cart-item";
+
+
+        div.innerHTML = `
+            <div class="cart-item-info">
+                <strong>${item.name}</strong>
+                <span>$${formatPrice(item.price)}</span>
+            </div>
+
+            <button
+                class="remove-item"
+                onclick="removeFromCart(${index})">
+                ×
+            </button>
+        `;
+
+
+        cartItems.appendChild(div);
+
     });
 
-  });
+
+    cartTotal.textContent =
+        "$" + formatPrice(total);
 }
 
 
-/* TOTAL */
+/* =========================
+   ELIMINAR
+========================= */
 
-function getTotal() {
+function removeFromCart(index) {
 
-  return cart.reduce((total, product) => {
-    return total + product.price;
-  }, 0);
+    cart.splice(index, 1);
 
+    updateCart();
 }
 
 
-/* ABRIR CHECKOUT */
+/* =========================
+   FORMATEAR PRECIO
+========================= */
+
+function formatPrice(price) {
+
+    return price.toLocaleString("es-AR");
+}
+
+
+/* =========================
+   ABRIR CARRITO
+========================= */
+
+function openCart() {
+
+    document
+        .getElementById("cartOverlay")
+        .classList.add("active");
+
+    document.body.style.overflow = "hidden";
+}
+
+
+/* =========================
+   CERRAR CARRITO
+========================= */
+
+function closeCart() {
+
+    document
+        .getElementById("cartOverlay")
+        .classList.remove("active");
+
+    document.body.style.overflow = "";
+}
+
+
+/* =========================
+   CHECKOUT
+========================= */
 
 function openCheckout() {
 
-  if (cart.length === 0) return;
+    if (cart.length === 0) {
 
-  checkoutTotal.textContent = formatPrice(getTotal());
+        alert("Tu Carrito Está Vacío.");
 
-  checkoutModal.classList.add("active");
+        return;
+    }
 
+
+    closeCart();
+
+
+    document
+        .getElementById("checkoutOverlay")
+        .classList.add("active");
+
+    document.body.style.overflow = "hidden";
 }
 
 
-/* CERRAR CHECKOUT */
+/* =========================
+   CERRAR CHECKOUT
+========================= */
 
-function closeCheckoutModal() {
+function closeCheckout() {
 
-  checkoutModal.classList.remove("active");
+    document
+        .getElementById("checkoutOverlay")
+        .classList.remove("active");
 
+    document.body.style.overflow = "";
 }
 
 
-/* GENERAR PEDIDO */
+/* =========================
+   CONFIRMAR PEDIDO
+========================= */
 
-function createOrderMessage(name, phone, payment) {
+function confirmOrder() {
 
-  let message = `Hola SergioStreaming! 👋
+    const name =
+        document
+            .getElementById("customerName")
+            .value
+            .trim();
 
-Quiero Realizar El Siguiente Pedido:
 
-`;
+    const customerWhatsapp =
+        document
+            .getElementById("customerWhatsapp")
+            .value
+            .trim();
 
-  cart.forEach((product, index) => {
 
-    message += `${index + 1}. ${product.name} - ${product.plan} - ${formatPrice(product.price)}\n`;
+    const payment =
+        document.querySelector(
+            'input[name="payment"]:checked'
+        ).value;
 
-  });
 
-  message += `
-━━━━━━━━━━━━━━
-Total: ${formatPrice(getTotal())}
-━━━━━━━━━━━━━━
+    if (!name || !customerWhatsapp) {
 
-Nombre: ${name}
-WhatsApp: ${phone}
-Método De Pago: ${payment}
-`;
+        alert(
+            "Completá Tu Nombre Y Tu WhatsApp."
+        );
 
-  if (payment === "Mercado Pago") {
+        return;
+    }
 
-    message += `
-    
-Link De Pago:
-${MERCADO_PAGO}
 
-Una Vez Realizado El Pago, Envío El Comprobante Por Este WhatsApp.
-`;
+    let total = 0;
 
-  } else {
+    let products = "";
 
-    message += `
 
-Quiero Recibir Los Datos Para Realizar La Transferencia.
-`;
+    cart.forEach(item => {
 
-  }
+        total += item.price;
 
-  return message;
+        products +=
+            `• ${item.name} — $${formatPrice(item.price)}\n`;
+
+    });
+
+
+    const message =
+`🛒 *NUEVO PEDIDO - SERGIOSTREAMING*
+
+👤 Nombre: ${name}
+📱 WhatsApp: ${customerWhatsapp}
+
+📦 *Productos:*
+${products}
+💰 *Total: $${formatPrice(total)}*
+
+💳 Método De Pago:
+${payment}
+
+🔗 Mercado Pago:
+${mercadoPagoLink}`;
+
+
+    const url =
+        `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+
+    window.open(url, "_blank");
 }
 
 
-/* EVENTOS */
+/* =========================
+   CERRAR TOCANDO AFUERA
+========================= */
 
-document.querySelectorAll(".add-button").forEach(button => {
+document
+    .getElementById("cartOverlay")
+    .addEventListener("click", function(event) {
 
-  button.addEventListener("click", () => {
-    addProduct(button);
-  });
+        if (event.target === this) {
+            closeCart();
+        }
 
-});
-
-
-openCart.addEventListener("click", openCartPanel);
-
-closeCart.addEventListener("click", closeCartPanel);
-
-cartOverlay.addEventListener("click", closeCartPanel);
-
-checkoutButton.addEventListener("click", openCheckout);
-
-closeCheckout.addEventListener("click", closeCheckoutModal);
+    });
 
 
-/* CERRAR MODAL TOCANDO AFUERA */
+document
+    .getElementById("checkoutOverlay")
+    .addEventListener("click", function(event) {
 
-checkoutModal.addEventListener("click", event => {
+        if (event.target === this) {
+            closeCheckout();
+        }
 
-  if (event.target === checkoutModal) {
-    closeCheckoutModal();
-  }
-
-});
-
-
-/* CONFIRMAR PEDIDO */
-
-checkoutForm.addEventListener("submit", event => {
-
-  event.preventDefault();
-
-  if (cart.length === 0) return;
-
-  const name = document.getElementById("customerName").value.trim();
-
-  const phone = document.getElementById("customerWhatsapp").value.trim();
-
-  const payment = document.querySelector(
-    'input[name="payment"]:checked'
-  ).value;
-
-  if (!name || !phone) {
-    alert("Completá Tu Nombre Y Número De WhatsApp.");
-    return;
-  }
-
-  const message = createOrderMessage(
-    name,
-    phone,
-    payment
-  );
-
-  const whatsappURL =
-    `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`;
-
-  window.open(whatsappURL, "_blank");
-
-});
+    });
 
 
-/* ESC PARA CERRAR */
-
-document.addEventListener("keydown", event => {
-
-  if (event.key === "Escape") {
-
-    closeCartPanel();
-    closeCheckoutModal();
-
-  }
-
-});
-
-
-/* INICIO */
+/* =========================
+   INICIO
+========================= */
 
 updateCart();
