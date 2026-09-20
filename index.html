@@ -1,641 +1,607 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080808">
-  <title>SergioStreaming | Streaming Premium</title>
-  <meta name="description" content="SergioStreaming - Cuentas de streaming premium al mejor precio.">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SergioStreaming</title>
+    <meta name="description" content="SergioStreaming - Servicios De Streaming">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="header-content">
-      <a href="#" class="logo">Sergio<span>Streaming</span></a>
-
-      <button class="cart-button" id="openCart" aria-label="Abrir carrito">
-        <span class="cart-icon">🛒</span>
-        <span class="cart-count" id="cartCount">0</span>
-      </button>
+<header class="header">
+    <div class="logo">
+        Sergio<span>Streaming</span>
     </div>
-  </header>
+
+    <button class="cart-button" onclick="openCart()">
+        🛒
+        <span id="cartCount">0</span>
+    </button>
+</header>
 
 
-  <!-- HERO -->
-  <main>
+<main>
 
+    <!-- HERO -->
     <section class="hero">
-      <div class="hero-badge">SERGIOSTREAMING</div>
+        <span class="hero-label">SERGIOSTREAMING</span>
 
-      <h1>Tu Entretenimiento<br><span>En Un Solo Lugar</span></h1>
+        <h1>
+            Tu Entretenimiento
+            <span>En Un Solo Lugar</span>
+        </h1>
 
-      <p>
-        Disfrutá Tus Plataformas Favoritas Con Planes Mensuales
-        Y Ofertas Especiales.
-      </p>
+        <p>
+            Elegí Tu Plataforma Favorita Y Disfrutá De Tus Contenidos.
+        </p>
 
-      <a href="#streaming" class="hero-button">
-        Ver Servicios
-      </a>
+        <a href="#streaming" class="hero-button">
+            Ver Plataformas
+        </a>
     </section>
 
 
     <!-- BENEFICIOS -->
     <section class="benefits">
 
-      <div class="benefit">
-        <div class="benefit-icon">⚡</div>
-        <div>
-          <strong>Entrega Rápida</strong>
-          <small>Recibí Tu Cuenta Luego Del Pago</small>
+        <div class="benefit">
+            <div class="benefit-icon">⚡</div>
+            <h3>Activación Rápida</h3>
+            <p>Recibí Tu Cuenta Rápidamente.</p>
         </div>
-      </div>
 
-      <div class="benefit">
-        <div class="benefit-icon">🔒</div>
-        <div>
-          <strong>Servicio Confiable</strong>
-          <small>Atención Directa Por WhatsApp</small>
+        <div class="benefit">
+            <div class="benefit-icon">🔒</div>
+            <h3>Servicio Seguro</h3>
+            <p>Compra Fácil Y Segura.</p>
         </div>
-      </div>
 
-      <div class="benefit">
-        <div class="benefit-icon">💳</div>
-        <div>
-          <strong>Pago Fácil</strong>
-          <small>Mercado Pago O Transferencia</small>
+        <div class="benefit">
+            <div class="benefit-icon">💬</div>
+            <h3>Atención Directa</h3>
+            <p>Estamos Para Ayudarte.</p>
         </div>
-      </div>
 
     </section>
 
 
     <!-- STREAMING -->
-    <section class="products-section" id="streaming">
+    <section id="streaming" class="products-section">
 
-      <div class="section-heading">
-        <span>CATÁLOGO</span>
-        <h2>Streaming Premium</h2>
-        <p>Elegí La Plataforma Y El Plan Que Preferís.</p>
-      </div>
+        <div class="section-header">
+            <span>CATÁLOGO</span>
+            <h2>Servicios De Streaming</h2>
+            <p>Elegí El Servicio Que Querés Contratar.</p>
+        </div>
 
 
-      <div class="products-grid">
+        <div class="products-grid">
 
 
-        <!-- NETFLIX -->
-        <article class="product-card">
+            <!-- NETFLIX -->
+            <article class="product-card">
 
-          <div class="platform netflix">N</div>
+                <div class="platform netflix">
+                    <img
+                        src="https://cdn.simpleicons.org/netflix/E50914"
+                        alt="Netflix">
+                </div>
 
-          <div class="product-info">
-            <h3>Netflix Premium</h3>
-            <p class="duration">4K · 1 Mes</p>
+                <div class="product-info">
 
-            <div class="price">
-              <del>$13.000</del>
-              <strong>$10.000</strong>
-            </div>
+                    <h3>Netflix Premium 4K</h3>
 
-            <span class="offer">OFERTA</span>
+                    <p class="duration">
+                        1 Mes
+                    </p>
 
-            <button
-              class="add-button"
-              data-name="Netflix Premium 4K"
-              data-plan="1 Mes"
-              data-price="10000">
-              Agregar Al Carrito
-            </button>
-          </div>
+                    <div class="price">
+                        <span class="old-price">$13.000</span>
+                        <strong>$10.000</strong>
+                    </div>
 
-        </article>
+                    <span class="offer">
+                        OFERTA
+                    </span>
 
+                    <button
+                        class="add-button"
+                        onclick="addToCart('Netflix Premium 4K - 1 Mes', 10000)">
+                        Agregar Al Carrito
+                    </button>
 
-        <!-- DISNEY ESTANDAR -->
-        <article class="product-card">
+                </div>
 
-          <div class="platform disney">D+</div>
+            </article>
 
-          <div class="product-info">
-            <h3>Disney+ Estándar</h3>
-            <p class="duration">1 Mes</p>
 
-            <div class="price">
-              <del>$8.000</del>
-              <strong>$6.000</strong>
-            </div>
+            <!-- DISNEY STANDARD -->
+            <article class="product-card">
 
-            <span class="offer">OFERTA</span>
+                <div class="platform disney">
+                    <img
+                        src="https://cdn.simpleicons.org/disneyplus/1685FF"
+                        alt="Disney+">
+                </div>
 
-            <button
-              class="add-button"
-              data-name="Disney+ Estándar"
-              data-plan="1 Mes"
-              data-price="6000">
-              Agregar Al Carrito
-            </button>
-          </div>
+                <div class="product-info">
 
-        </article>
+                    <h3>Disney+ Estándar</h3>
 
+                    <p class="duration">
+                        1 Mes
+                    </p>
 
-        <!-- DISNEY PREMIUM -->
-        <article class="product-card">
+                    <div class="price">
+                        <span class="old-price">$8.000</span>
+                        <strong>$6.000</strong>
+                    </div>
 
-          <div class="platform disney">D+</div>
+                    <span class="offer">
+                        OFERTA
+                    </span>
 
-          <div class="product-info">
-            <h3>Disney+ Premium</h3>
-            <p class="duration">1 Mes</p>
+                    <button
+                        class="add-button"
+                        onclick="addToCart('Disney+ Estándar - 1 Mes', 6000)">
+                        Agregar Al Carrito
+                    </button>
 
-            <div class="price">
-              <del>$9.000</del>
-              <strong>$6.500</strong>
-            </div>
+                </div>
 
-            <span class="offer">OFERTA</span>
+            </article>
 
-            <button
-              class="add-button"
-              data-name="Disney+ Premium"
-              data-plan="1 Mes"
-              data-price="6500">
-              Agregar Al Carrito
-            </button>
-          </div>
 
-        </article>
+            <!-- DISNEY PREMIUM -->
+            <article class="product-card">
 
+                <div class="platform disney">
+                    <img
+                        src="https://cdn.simpleicons.org/disneyplus/1685FF"
+                        alt="Disney+">
+                </div>
 
-        <!-- HBO 1 MES -->
-        <article class="product-card">
+                <div class="product-info">
 
-          <div class="platform hbo">MAX</div>
+                    <h3>Disney+ Premium</h3>
 
-          <div class="product-info">
-            <h3>HBO Max</h3>
-            <p class="duration">1 Mes</p>
+                    <p class="duration">
+                        1 Mes
+                    </p>
 
-            <div class="price">
-              <del>$7.000</del>
-              <strong>$5.000</strong>
-            </div>
+                    <div class="price">
+                        <span class="old-price">$9.000</span>
+                        <strong>$6.500</strong>
+                    </div>
 
-            <span class="offer">OFERTA</span>
+                    <span class="offer">
+                        OFERTA
+                    </span>
 
-            <button
-              class="add-button"
-              data-name="HBO Max"
-              data-plan="1 Mes"
-              data-price="5000">
-              Agregar Al Carrito
-            </button>
-          </div>
+                    <button
+                        class="add-button"
+                        onclick="addToCart('Disney+ Premium - 1 Mes', 6500)">
+                        Agregar Al Carrito
+                    </button>
 
-        </article>
+                </div>
 
+            </article>
 
-        <!-- HBO 2 MESES -->
-        <article class="product-card">
 
-          <div class="platform hbo">MAX</div>
+            <!-- HBO MAX -->
+            <article class="product-card">
 
-          <div class="product-info">
-            <h3>HBO Max</h3>
-            <p class="duration">2 Meses</p>
+                <div class="platform max">
+                    <img
+                        src="https://cdn.simpleicons.org/hbo/9D4EDD"
+                        alt="HBO Max">
+                </div>
 
-            <div class="price">
-              <del>$10.000</del>
-              <strong>$7.500</strong>
-            </div>
+                <div class="product-info">
 
-            <span class="offer">OFERTA</span>
+                    <h3>HBO Max</h3>
 
-            <button
-              class="add-button"
-              data-name="HBO Max"
-              data-plan="2 Meses"
-              data-price="7500">
-              Agregar Al Carrito
-            </button>
-          </div>
+                    <div class="price-options">
 
-        </article>
+                        <button onclick="addToCart('HBO Max - 1 Mes', 5000)">
+                            <span>1 Mes</span>
+                            <del>$7.000</del>
+                            <strong>$5.000</strong>
+                        </button>
 
+                        <button onclick="addToCart('HBO Max - 2 Meses', 7500)">
+                            <span>2 Meses</span>
+                            <del>$10.000</del>
+                            <strong>$7.500</strong>
+                        </button>
 
-        <!-- HBO 3 MESES -->
-        <article class="product-card">
+                        <button onclick="addToCart('HBO Max - 3 Meses', 9500)">
+                            <span>3 Meses</span>
+                            <del>$12.000</del>
+                            <strong>$9.500</strong>
+                        </button>
 
-          <div class="platform hbo">MAX</div>
+                    </div>
 
-          <div class="product-info">
-            <h3>HBO Max</h3>
-            <p class="duration">3 Meses</p>
+                </div>
 
-            <div class="price">
-              <del>$12.000</del>
-              <strong>$9.500</strong>
-            </div>
+            </article>
 
-            <span class="offer">OFERTA</span>
 
-            <button
-              class="add-button"
-              data-name="HBO Max"
-              data-plan="3 Meses"
-              data-price="9500">
-              Agregar Al Carrito
-            </button>
-          </div>
+            <!-- PRIME VIDEO -->
+            <article class="product-card">
 
-        </article>
+                <div class="platform prime">
+                    <img
+                        src="https://cdn.simpleicons.org/primevideo/00A8E1"
+                        alt="Prime Video">
+                </div>
 
+                <div class="product-info">
 
-        <!-- PRIME 1 -->
-        <article class="product-card">
+                    <h3>Prime Video</h3>
 
-          <div class="platform prime">P</div>
+                    <div class="price-options">
 
-          <div class="product-info">
-            <h3>Prime Video</h3>
-            <p class="duration">1 Mes</p>
+                        <button onclick="addToCart('Prime Video - 1 Mes', 5000)">
+                            <span>1 Mes</span>
+                            <del>$7.000</del>
+                            <strong>$5.000</strong>
+                        </button>
 
-            <div class="price">
-              <del>$7.000</del>
-              <strong>$5.000</strong>
-            </div>
+                        <button onclick="addToCart('Prime Video - 2 Meses', 7500)">
+                            <span>2 Meses</span>
+                            <del>$10.000</del>
+                            <strong>$7.500</strong>
+                        </button>
 
-            <span class="offer">OFERTA</span>
+                        <button onclick="addToCart('Prime Video - 3 Meses', 9500)">
+                            <span>3 Meses</span>
+                            <del>$12.000</del>
+                            <strong>$9.500</strong>
+                        </button>
 
-            <button
-              class="add-button"
-              data-name="Prime Video"
-              data-plan="1 Mes"
-              data-price="5000">
-              Agregar Al Carrito
-            </button>
-          </div>
+                    </div>
 
-        </article>
+                </div>
 
+            </article>
 
-        <!-- PRIME 2 -->
-        <article class="product-card">
 
-          <div class="platform prime">P</div>
+            <!-- PARAMOUNT -->
+            <article class="product-card">
 
-          <div class="product-info">
-            <h3>Prime Video</h3>
-            <p class="duration">2 Meses</p>
+                <div class="platform paramount">
+                    <img
+                        src="https://cdn.simpleicons.org/paramountplus/1685FF"
+                        alt="Paramount+">
+                </div>
 
-            <div class="price">
-              <del>$10.000</del>
-              <strong>$7.500</strong>
-            </div>
+                <div class="product-info">
 
-            <span class="offer">OFERTA</span>
+                    <h3>Paramount+</h3>
 
-            <button
-              class="add-button"
-              data-name="Prime Video"
-              data-plan="2 Meses"
-              data-price="7500">
-              Agregar Al Carrito
-            </button>
-          </div>
+                    <p class="duration">
+                        1 Mes
+                    </p>
 
-        </article>
+                    <div class="price">
+                        <span class="old-price">$8.000</span>
+                        <strong>$6.500</strong>
+                    </div>
 
+                    <span class="offer">
+                        OFERTA
+                    </span>
 
-        <!-- PRIME 3 -->
-        <article class="product-card">
+                    <button
+                        class="add-button"
+                        onclick="addToCart('Paramount+ - 1 Mes', 6500)">
+                        Agregar Al Carrito
+                    </button>
 
-          <div class="platform prime">P</div>
+                </div>
 
-          <div class="product-info">
-            <h3>Prime Video</h3>
-            <p class="duration">3 Meses</p>
+            </article>
 
-            <div class="price">
-              <del>$12.000</del>
-              <strong>$9.500</strong>
-            </div>
 
-            <span class="offer">OFERTA</span>
+            <!-- VIX -->
+            <article class="product-card">
 
-            <button
-              class="add-button"
-              data-name="Prime Video"
-              data-plan="3 Meses"
-              data-price="9500">
-              Agregar Al Carrito
-            </button>
-          </div>
+                <div class="platform vix">
+                    <img
+                        src="https://cdn.simpleicons.org/vix/FF6500"
+                        alt="ViX">
+                </div>
 
-        </article>
+                <div class="product-info">
 
+                    <h3>ViX</h3>
 
-        <!-- PARAMOUNT -->
-        <article class="product-card">
+                    <p class="duration">
+                        1 Mes
+                    </p>
 
-          <div class="platform paramount">P+</div>
+                    <div class="price">
+                        <span class="old-price">$7.000</span>
+                        <strong>$4.500</strong>
+                    </div>
 
-          <div class="product-info">
-            <h3>Paramount+</h3>
-            <p class="duration">1 Mes</p>
+                    <span class="offer">
+                        OFERTA
+                    </span>
 
-            <div class="price">
-              <del>$8.000</del>
-              <strong>$6.500</strong>
-            </div>
+                    <button
+                        class="add-button"
+                        onclick="addToCart('ViX - 1 Mes', 4500)">
+                        Agregar Al Carrito
+                    </button>
 
-            <span class="offer">OFERTA</span>
+                </div>
 
-            <button
-              class="add-button"
-              data-name="Paramount+"
-              data-plan="1 Mes"
-              data-price="6500">
-              Agregar Al Carrito
-            </button>
-          </div>
+            </article>
 
-        </article>
 
+            <!-- APPLE TV -->
+            <article class="product-card">
 
-        <!-- VIX -->
-        <article class="product-card">
+                <div class="platform apple">
+                    <img
+                        src="https://cdn.simpleicons.org/appletv/000000"
+                        alt="Apple TV+">
+                </div>
 
-          <div class="platform vix">VIX</div>
+                <div class="product-info">
 
-          <div class="product-info">
-            <h3>ViX</h3>
-            <p class="duration">1 Mes</p>
+                    <h3>Apple TV+</h3>
 
-            <div class="price">
-              <del>$7.000</del>
-              <strong>$4.500</strong>
-            </div>
+                    <p class="duration">
+                        1 Mes
+                    </p>
 
-            <span class="offer">OFERTA</span>
+                    <div class="price">
+                        <span class="old-price">$7.000</span>
+                        <strong>$4.500</strong>
+                    </div>
 
-            <button
-              class="add-button"
-              data-name="ViX"
-              data-plan="1 Mes"
-              data-price="4500">
-              Agregar Al Carrito
-            </button>
-          </div>
+                    <span class="offer">
+                        OFERTA
+                    </span>
 
-        </article>
+                    <button
+                        class="add-button"
+                        onclick="addToCart('Apple TV+ - 1 Mes', 4500)">
+                        Agregar Al Carrito
+                    </button>
 
+                </div>
 
-        <!-- APPLE -->
-        <article class="product-card">
+            </article>
 
-          <div class="platform apple"></div>
 
-          <div class="product-info">
-            <h3>Apple TV+</h3>
-            <p class="duration">1 Mes</p>
+            <!-- YOUTUBE -->
+            <article class="product-card">
 
-            <div class="price">
-              <del>$7.000</del>
-              <strong>$4.500</strong>
-            </div>
+                <div class="platform youtube">
+                    <img
+                        src="https://cdn.simpleicons.org/youtube/FF0000"
+                        alt="YouTube">
+                </div>
 
-            <span class="offer">OFERTA</span>
+                <div class="product-info">
 
-            <button
-              class="add-button"
-              data-name="Apple TV+"
-              data-plan="1 Mes"
-              data-price="4500">
-              Agregar Al Carrito
-            </button>
-          </div>
+                    <h3>YouTube Premium</h3>
 
-        </article>
+                    <p class="duration">
+                        1 Mes
+                    </p>
 
+                    <div class="price">
+                        <span class="old-price">$7.500</span>
+                        <strong>$5.000</strong>
+                    </div>
 
-        <!-- YOUTUBE -->
-        <article class="product-card">
+                    <span class="offer">
+                        OFERTA
+                    </span>
 
-          <div class="platform youtube">YT</div>
+                    <button
+                        class="add-button"
+                        onclick="addToCart('YouTube Premium - 1 Mes', 5000)">
+                        Agregar Al Carrito
+                    </button>
 
-          <div class="product-info">
-            <h3>YouTube Premium</h3>
-            <p class="duration">1 Mes</p>
+                </div>
 
-            <div class="price">
-              <del>$7.500</del>
-              <strong>$5.000</strong>
-            </div>
+            </article>
 
-            <span class="offer">OFERTA</span>
+        </div>
 
-            <button
-              class="add-button"
-              data-name="YouTube Premium"
-              data-plan="1 Mes"
-              data-price="5000">
-              Agregar Al Carrito
-            </button>
-          </div>
-
-        </article>
-
-      </div>
     </section>
 
 
-    <!-- COMO COMPRAR -->
+    <!-- CÓMO COMPRAR -->
     <section class="how-section">
 
-      <div class="section-heading">
-        <span>SIMPLE Y RÁPIDO</span>
-        <h2>¿Cómo Comprar?</h2>
-      </div>
-
-      <div class="steps">
-
-        <div class="step">
-          <b>01</b>
-          <h3>Elegí Tu Servicio</h3>
-          <p>Seleccioná La Plataforma Y El Plan Que Querés.</p>
+        <div class="section-header">
+            <span>FÁCIL Y RÁPIDO</span>
+            <h2>¿Cómo Comprar?</h2>
         </div>
 
-        <div class="step">
-          <b>02</b>
-          <h3>Realizá El Pago</h3>
-          <p>Pagá Mediante Mercado Pago O Transferencia.</p>
-        </div>
+        <div class="steps">
 
-        <div class="step">
-          <b>03</b>
-          <h3>Enviá El Comprobante</h3>
-          <p>Mandanos El Comprobante Por WhatsApp.</p>
-        </div>
+            <div class="step">
+                <span>01</span>
+                <h3>Elegí</h3>
+                <p>Seleccioná El Servicio Que Querés.</p>
+            </div>
 
-        <div class="step">
-          <b>04</b>
-          <h3>Recibí Tu Cuenta</h3>
-          <p>Te Enviamos Los Datos De Acceso.</p>
-        </div>
+            <div class="step">
+                <span>02</span>
+                <h3>Agregá</h3>
+                <p>Agregalo A Tu Carrito.</p>
+            </div>
 
-      </div>
+            <div class="step">
+                <span>03</span>
+                <h3>Completá</h3>
+                <p>Ingresá Tus Datos.</p>
+            </div>
+
+            <div class="step">
+                <span>04</span>
+                <h3>Recibí</h3>
+                <p>Coordinamos La Entrega.</p>
+            </div>
+
+        </div>
 
     </section>
 
 
-    <!-- CONTACTO -->
+    <!-- WHATSAPP -->
     <section class="contact-section">
 
-      <div class="contact-card">
-        <span class="contact-label">ATENCIÓN DIRECTA</span>
-        <h2>¿Necesitás Ayuda?</h2>
-        <p>Escribinos Por WhatsApp Y Te Ayudamos Con Tu Compra.</p>
+        <div class="contact-content">
 
-        <a
-          href="https://wa.me/543844546841"
-          target="_blank"
-          class="whatsapp-button">
-          💬 WhatsApp
-        </a>
-      </div>
+            <span class="contact-label">
+                ¿NECESITÁS AYUDA?
+            </span>
+
+            <h2>
+                Hablemos Por WhatsApp
+            </h2>
+
+            <p>
+                Consultanos Antes De Comprar.
+            </p>
+
+            <a
+                href="https://wa.me/543844546841"
+                target="_blank"
+                class="whatsapp-button">
+                💬 Escribir Por WhatsApp
+            </a>
+
+        </div>
 
     </section>
 
-  </main>
+</main>
 
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-logo">Sergio<span>Streaming</span></div>
-    <p>Entretenimiento Premium En Un Solo Lugar.</p>
-    <small>© 2026 SergioStreaming. Todos Los Derechos Reservados.</small>
-  </footer>
+<footer class="footer">
 
-
-  <!-- CARRITO -->
-  <div class="overlay" id="cartOverlay"></div>
-
-  <aside class="cart-panel" id="cartPanel">
-
-    <div class="cart-header">
-      <div>
-        <span>MI PEDIDO</span>
-        <h2>Carrito</h2>
-      </div>
-
-      <button id="closeCart" class="close-button">×</button>
+    <div class="logo">
+        Sergio<span>Streaming</span>
     </div>
 
-    <div class="cart-items" id="cartItems">
-      <div class="empty-cart">
-        <div>🛒</div>
-        <h3>Tu Carrito Está Vacío</h3>
-        <p>Agregá Un Servicio Para Continuar.</p>
-      </div>
+    <p>
+        © 2026 SergioStreaming
+    </p>
+
+    <p>
+        Todos Los Derechos Reservados.
+    </p>
+
+</footer>
+
+
+<!-- CARRITO -->
+<div id="cartOverlay" class="overlay">
+
+    <div class="cart-panel">
+
+        <button class="close-button" onclick="closeCart()">
+            ×
+        </button>
+
+        <h2>Tu Carrito</h2>
+
+        <div id="cartItems"></div>
+
+        <div class="cart-total">
+            <span>Total</span>
+            <strong id="cartTotal">$0</strong>
+        </div>
+
+        <button
+            id="checkoutButton"
+            class="checkout-button"
+            onclick="openCheckout()">
+            Continuar Compra
+        </button>
+
     </div>
 
-    <div class="cart-footer">
-
-      <div class="cart-total">
-        <span>Total</span>
-        <strong id="cartTotal">$0</strong>
-      </div>
-
-      <button class="checkout-button" id="checkoutButton">
-        Continuar Con El Pedido
-      </button>
-
-    </div>
-
-  </aside>
+</div>
 
 
-  <!-- CHECKOUT -->
-  <div class="modal-overlay" id="checkoutModal">
+<!-- CHECKOUT -->
+<div id="checkoutOverlay" class="overlay">
 
-    <div class="modal">
+    <div class="checkout-modal">
 
-      <button class="modal-close" id="closeCheckout">×</button>
+        <button class="close-button" onclick="closeCheckout()">
+            ×
+        </button>
 
-      <span class="modal-label">FINALIZAR PEDIDO</span>
-      <h2>Datos Del Cliente</h2>
+        <h2>Finalizar Compra</h2>
 
-      <p class="modal-description">
-        Completá Tus Datos Para Preparar El Pedido.
-      </p>
+        <p>
+            Completá Tus Datos Para Continuar.
+        </p>
 
-      <form id="checkoutForm">
-
-        <label for="customerName">Nombre</label>
         <input
-          type="text"
-          id="customerName"
-          placeholder="Tu Nombre"
-          required>
+            type="text"
+            id="customerName"
+            placeholder="Tu Nombre">
 
-        <label for="customerWhatsapp">WhatsApp</label>
         <input
-          type="tel"
-          id="customerWhatsapp"
-          placeholder="Tu Número De WhatsApp"
-          required>
+            type="tel"
+            id="customerWhatsapp"
+            placeholder="Tu WhatsApp">
 
-        <label>Método De Pago</label>
+        <h3>Forma De Pago</h3>
 
         <div class="payment-options">
 
-          <label class="payment-option">
-            <input
-              type="radio"
-              name="payment"
-              value="Mercado Pago"
-              checked>
-            <span>
-              <strong>Mercado Pago</strong>
-              <small>Pago Online</small>
-            </span>
-          </label>
+            <label>
+                <input
+                    type="radio"
+                    name="payment"
+                    value="Mercado Pago"
+                    checked>
+                Mercado Pago
+            </label>
 
-          <label class="payment-option">
-            <input
-              type="radio"
-              name="payment"
-              value="Transferencia">
-            <span>
-              <strong>Transferencia</strong>
-              <small>Comprobante Por WhatsApp</small>
-            </span>
-          </label>
+            <label>
+                <input
+                    type="radio"
+                    name="payment"
+                    value="Transferencia">
+                Transferencia
+            </label>
 
         </div>
 
-        <div class="checkout-summary">
-          <span>Total Del Pedido</span>
-          <strong id="checkoutTotal">$0</strong>
-        </div>
-
-        <button type="submit" class="confirm-button">
-          Confirmar Pedido
+        <button
+            class="checkout-button"
+            onclick="confirmOrder()">
+            Confirmar Pedido
         </button>
-
-      </form>
 
     </div>
 
-  </div>
+</div>
 
 
-  <!-- SCRIPT -->
-  <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
-            </html>
+</html>
