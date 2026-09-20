@@ -287,6 +287,8 @@ input {
     overflow: hidden;
 }
 
+/* Logos IMG */
+
 .platform img {
     width: 48px;
     height: 48px;
@@ -299,8 +301,50 @@ input {
     display: block;
 }
 
+/* Logos SVG */
 
-/* Logos */
+.platform svg {
+    display: block !important;
+
+    width: 58px !important;
+    height: 58px !important;
+
+    max-width: 100% !important;
+    max-height: 100% !important;
+
+    flex-shrink: 0;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    overflow: visible;
+
+    fill: none;
+}
+
+/* SVG TEXT */
+
+.platform svg text {
+    display: block !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    fill: currentColor !important;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* SVG PATH */
+
+.platform svg path {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* =========================
+   LOGO COLORS
+========================= */
 
 .netflix {
     background: #140708;
@@ -308,6 +352,7 @@ input {
 
 .disney {
     background: #07101d;
+    color: #1685ff !important;
 }
 
 .max {
@@ -316,6 +361,7 @@ input {
 
 .prime {
     background: #06151a;
+    color: #00a8e1 !important;
 }
 
 .paramount {
@@ -324,6 +370,7 @@ input {
 
 .vix {
     background: #1a1008;
+    color: #ff6500 !important;
 }
 
 .apple {
@@ -332,6 +379,29 @@ input {
 
 .youtube {
     background: #190707;
+}
+
+
+/* =========================
+   FORZAR COLORES SVG
+========================= */
+
+.disney-local {
+    color: #1685ff !important;
+}
+
+.prime-local {
+    color: #00a8e1 !important;
+}
+
+.vix-local {
+    color: #ff6500 !important;
+}
+
+.disney-local svg,
+.prime-local svg,
+.vix-local svg {
+    color: inherit !important;
 }
 
 
@@ -843,4 +913,4 @@ input {
     .products-grid {
         grid-template-columns: repeat(3, 1fr);
     }
-}
+    }
